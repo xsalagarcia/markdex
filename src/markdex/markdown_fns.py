@@ -32,7 +32,7 @@ def get_index(path: Path) -> list[str]:
 
             if re.fullmatch(r"#{1,6}", split_line[0]):  # This line is a title.
                 link = split_line[1].lower().replace(" ", "-")  # Whitespaces are '-'
-                link = re.sub(r"[^a-z0-9-àáèéìíòóùúüöï]", "", link)  # Remove all that is not this set of chars.
+                link = re.sub(r"[^a-z0-9-àáèéìíòóùúüöïç$]", "", link)  # Remove all that is not this set of chars.
                 link = f'#{link}'
                 index.append(" " * ((len(split_line[0]) - 1) *2)
                              + f"* [{split_line[1].removesuffix(chr(10))}]"
